@@ -44,8 +44,8 @@ def login():
 
     if not user or not user.check_password(data["password"]):
         return jsonify({"message": "Invalid credentials"}), 401
-    print(f"user.: {user.id}, type: {type(user.id)}")
-    print(f"user.username: {user.username}, type: {type(user.username)}")
+    # print(f"user.: {user.id}, type: {type(user.id)}")
+    # print(f"user.username: {user.username}, type: {type(user.username)}")
 
     access_token = create_access_token(
         identity= user.username, 
@@ -57,8 +57,8 @@ def login():
     user.refresh_token = refresh_token
     # print(f"Updating user: {user.username}, access_token: {access_token}")
     db.session.commit()
-    print(f"Received Token: {user.access_token}")  # 🔍 Debug xem Flask có nhận token không
-    print(f"User role: {user.role}")
+    # print(f"Received Token: {user.access_token}")  # 🔍 Debug xem Flask có nhận token không
+    # print(f"User role: {user.role}")
     return jsonify(access_token=access_token, refresh_token=refresh_token), 200
 
 @auth_bp.route("/refresh", methods=["POST"])
@@ -84,11 +84,3 @@ def refresh():
         print(f"[ERROR] Exception Occurred: {str(e)}", flush=True)
         return jsonify({"message": "Internal Server Error"}), 500
 
-@auth_bp.route('/get-token', methods=['GET'])
-@jwt_required()  # Bảo vệ endpoint, chỉ user đã đăng nhập mới lấy được token
-def get_token():
-    username = get_jwt_identity()  # Lấy username từ token hiện tại
-    user = User.query.filter_by(username=username).first()
-    if not user or not user.access_token:
-        return jsonify({"msg": "Token not found"}), 404
-    return jsonify({"accessToken": user.access_token}), 200

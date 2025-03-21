@@ -28,6 +28,7 @@ class Task(db.Model):
     status = db.Column(db.String(20), nullable=False, default="pending")# in_progress, completed
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    due_date = db.Column(db.DateTime, nullable=True, server_default=None)  
     user_id = db.Column(db.String(36), db.ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
 
     user = db.relationship("User", back_populates="tasks") 
