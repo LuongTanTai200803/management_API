@@ -1,11 +1,13 @@
 from datetime import timedelta
-import os
-
 from flask import app
+import os
+from dotenv import load_dotenv
+load_dotenv() 
 
 class Config:
     SECRET_KEY = os.getenv("SECRET_KEY")
     SQLALCHEMY_DATABASE_URI = os.getenv("SQLALCHEMY_DATABASE_URI")
+
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     JWT_SECRET_KEY = os.getenv("SECRET_KEY")
     MAIL_SERVER = os.getenv("MAIL_SERVER")
@@ -16,11 +18,21 @@ class Config:
     JWT_ACCESS_TOKEN_EXPIRES = timedelta(minutes=15)  # Access Token hết hạn sau 15 phút
     JWT_REFRESH_TOKEN_EXPIRES = timedelta(days=30)  # Refresh Token hết hạn sau 30 ngày
     JSONIFY_PRETTYPRINT_REGULAR = True  # Định dạng JSON đẹp
-    app.json.ensure_ascii = False  # Tắt escape Unicode (quan trọng)
+    JSON_AS_ASCII = False  # Tắt escape Unicode (quan trọng)
     # app.config['JSON_SORT_KEYS'] = False  # Tắt sắp xếp key trong JSON
+    
+    # Cấu hình cache
+    CACHE_TYPE = "RedisCache"
+    CACHE_REDIS_HOST = "localhost"
+    CACHE_REDIS_PORT = 6379
+    CACHE_REDIS_DB = 0
+    CACHE_REDIS_URL = "redis://localhost:6379/0"
+    CACHE_DEFAULT_TIMEOUT = 300  # Thời gian cache mặc định (giây)
 
-
-    app.config['CELERY_CONFIG'] = {
+    # Cấu hình celery
+    CELERY_BROKER_URL = "redis://localhost:6379/0"  # Địa chỉ Redis broker
+    CELERY_RESULT_BACKEND = "redis://localhost:6379/0"  # Địa chỉ Redis backend
+    CELERY_CONFIG = {
     'task_serializer': 'json',
     'accept_content': ['json'],
     'result_serializer': 'json',
@@ -30,7 +42,7 @@ class Config:
 
     # Cấu hình celery Beat
     from celery.schedules import crontab
-    app.config['CELERY_BEAT_SCHEDULE'] = {
+    CELERY_BEAT_SCHEDULE = {
     'delete-overdue-tasks-every-hour': {
         'task': 'app.tasks.delete_overdue_tasks',
         'schedule': 30.0,  # Chạy mỗi giờ (3600 giây)

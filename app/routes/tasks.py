@@ -1,12 +1,14 @@
 from collections import OrderedDict
-import celery
-from flask import Blueprint, jsonify, request, Response
+from flask import Blueprint, app, jsonify, request, Response, current_app
 from flask_jwt_extended import get_jwt_identity, jwt_required, get_jwt
 from app.models.models import Task, User
-from app.extensions import db
+from app.extensions import db, cache
 from app.tasks import delete_overdue_tasks, send_task_creation_email
-import json
+import logging
 
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 task_bp = Blueprint("tasks", __name__)
 
@@ -34,7 +36,8 @@ def create_task():
     task.description = data.get("description", "No description")
     db.session.add(task)
     db.session.commit()
-
+    cache.delete(f"tasks_{user.id}")
+    
     # Gọi Celery task
     send_task_creation_email.delay("example@gmail.com", task.title)
 
@@ -71,6 +74,7 @@ def gets_task():
     # Thêm điều kiện search
     if search:
         query = query.filter(Task.title.ilike(f'%{search}%'))  # Tìm kiếm không phân biệt hoa thường
+    
     query = query.order_by(Task.id.asc())  # Sắp xếp theo ID tăng dần
     # Thêm phân trang
     pagination = query.paginate(page=page, per_page=per_page, error_out=False)
@@ -91,10 +95,10 @@ def gets_task():
 
    # Trả về kết quả với thông tin phân trang
     response =  OrderedDict ([
-        ("tasks", tasks_data),
-        ("total", pagination.total),      # Tổng số task
-        ("pages", pagination.pages),      # Tổng số trang
-        ("current_page", pagination.page) # Trang hiện tại
+        ("tasks", tasks_data),              # Tổng số task
+        ("total", pagination.total),        # Tổng số trang
+        ("pages", pagination.pages),        # Trang hiện tại
+        ("current_page", pagination.page) 
     ])
     # json_response = json.dumps( response, ensure_ascii=False)
     return jsonify(response), 200
@@ -123,7 +127,7 @@ def update_task(task_id):
     task.title = data.get("title", task.title)
     task.status = data.get("status", task.status)
     task.description = data.get("description", task.description)
-
+    cache.delete(f"tasks_{user.id}")
     db.session.commit()
 
     return jsonify({
@@ -136,7 +140,6 @@ def update_task(task_id):
             "user_id": task.user_id,
         }
     }), 201
-
 
 @task_bp.route("/<task_id>", methods=["DELETE"])
 @jwt_required() # Buộc user phải có token hợp lệ
@@ -158,11 +161,30 @@ def delete_task(task_id):
     
     db.session.delete(task)
     db.session.commit()
-
+    cache.delete(f"tasks_{user.id}")
     return jsonify({"message": "Task delete successfully"}), 201
 
 @task_bp.route("/delete-overdue", methods=["POST"])
 @jwt_required() # Buộc user phải có token hợp lệ
 def delete_overdue():
+    current_user = get_jwt_identity() # Lấy username từ token
+    user = User.query.filter_by(username=current_user).first()
     task_result = delete_overdue_tasks.delay()  # Gửi task đến Celery
+    send_task_creation_email.delay("example@gmail.com", task_result.id)
+    cache.delete(f"tasks_{user.id}")
     return jsonify({"message": "Task is being processed", "task_id": task_result.id}), 200
+
+@task_bp.route('/cache', methods=['GET'])
+@cache.cached(timeout=10, key_prefix="tasks_cache")
+def get_tasks():
+    logger.info("Fetching tasks from database")  # Chỉ chạy khi không dùng cache
+    tasks = Task.query.all()
+    return jsonify([task.to_dict() for task in tasks]), 200
+
+# @task_bp.route('/cache', methods=['GET'])
+# @cache.cached(timeout=16, key_prefix="tasks_cache")
+# def get_tasks():
+#     from datetime import datetime
+#     return jsonify({"time": datetime.now().isoformat()})
+
+

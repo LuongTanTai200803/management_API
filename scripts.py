@@ -5,12 +5,12 @@ import requests
 BASE_URL = "http://127.0.0.1:5000/api"
 REGISTER_URL = f"{BASE_URL}/auth/register"
 LOGIN_URL = f"{BASE_URL}/auth/login"
-TASK_URL = f"{BASE_URL}/tasks/?page=2"
+TASK_URL = f"{BASE_URL}/tasks/"
 TASK_URL_CREATE = f"{BASE_URL}/tasks/"
 TASK_URL_UPDATE = f"{BASE_URL}/tasks/d00fa6d8-5a43-4fb1-bbcf-cbf13af1c292"
 TASK_URL_DELETE = f"{BASE_URL}/tasks/d9b821d2-e02c-47be-90b3-547a4e57e6a6"
 TASK_URL_DELETE_OVERDUE = f"{BASE_URL}/tasks/delete-overdue"
-
+TASK_CACHE = f"{BASE_URL}/tasks/cache"
 
 # register_payload = {"username": "Khải", "password": "123456"}
 # try:
@@ -43,43 +43,62 @@ if login_response.status_code != 200:
 
 access_token = login_response.json()['access_token']
 headers = {"Authorization": f"Bearer {access_token}"}
-due_date = (datetime.now(timezone.utc) + timedelta(hours=0)).isoformat()
+due_date = (datetime.now(timezone.utc) + timedelta(hours=7) +timedelta(hours=8)).isoformat()
 
 # Gọi API auto xóa task quá hạn
+# try:
+#     delete_overdue = requests.post(TASK_URL_DELETE_OVERDUE, headers=headers)
+
+#     print(f"Tasks status: {delete_overdue .status_code}")    # Kiểm tra status
+#     print(f"Tasks response:", delete_overdue .text)
+
+#     if delete_overdue.status_code == 200:  # Dùng 201 cho GET
+#         print("Result:", delete_overdue.json())
+#     else:
+#         print(f"Tasks failed: {delete_overdue.text}")
+# except requests.exceptions.ConnectionError:
+#     print(f"Cannot connect to {TASK_URL_DELETE_OVERDUE}")
+#     exit()
 try:
-    delete_overdue = requests.post(TASK_URL_DELETE_OVERDUE, headers=headers)
+    # Chú ý 
+    # ('search', default='', type=str)  # Tìm kiếm theo title
+    # ('page', default=1, type=int)      # Trang hiện tại
+    # ('per_page', default=10, type=int)  # Số task mỗi trang
+   
+    get_response = requests.get(TASK_URL, headers=headers)
 
-    print(f"Tasks status: {delete_overdue .status_code}")    # Kiểm tra status
-    print(f"Tasks response:", delete_overdue .text)
-
-    if delete_overdue.status_code == 200:  # Dùng 201 cho GET
-        print("Result:", delete_overdue.json())
+    print(f" - Status: {get_response.status_code}")
+    print(f" - Tasks count: {len(get_response.json()['tasks'])}")
+    print("-" * 50)
+    if get_response.status_code == 200:  # Dùng 200 cho GET
+        print("Result:", get_response.json())
     else:
-        print(f"Tasks failed: {delete_overdue.text}")
+        print(f"Get tasks failed: {get_response.text}")
 except requests.exceptions.ConnectionError:
-    print(f"Cannot connect to {TASK_URL_DELETE_OVERDUE}")
+    print(f"Cannot connect to {TASK_URL}")
     exit()
 
 
-# Check API update_task   
-# create_task = {
-#     "title": "Lich lam viec 1", 
-#     "status": "Đang làm",
-#     "due_date": due_date
-# }
-# try:
-#     create_task = requests.post(TASK_URL_CREATE, headers=headers, json=create_task)
+# Check API create_task   
+create_task = {
+    "title": "Cài đặt Flask-Caching", 
+    "status": "Đang làm",
+    "due_date": due_date
+}
+try:
+    create_task = requests.post(TASK_URL_CREATE, headers=headers, json=create_task)
 
-#     print(f"Tasks status: {create_task .status_code}")    # Kiểm tra status
-#     print(f"Tasks response:", create_task .text)
+    print(f"Tasks status: {create_task .status_code}")    # Kiểm tra status
+    print(f"Tasks response:", create_task .text)
 
-#     if create_task.status_code == 201:  # Dùng 201 cho GET
-#         print("Result:", create_task.json())
-#     else:
-#         print(f"Tasks failed: {create_task.text}")
-# except requests.exceptions.ConnectionError:
-#     print(f"Cannot connect to {TASK_URL_CREATE}")
-#     exit()
+    if create_task.status_code == 201:  # Dùng 201 cho GET
+        print("Result:", create_task.json())
+    else:
+        print(f"Tasks failed: {create_task.text}")
+except requests.exceptions.ConnectionError:
+    print(f"Cannot connect to {TASK_URL_CREATE}")
+    exit()
+
 # Check API update_task   
 # update_task = {
 #     "status": "Done",
@@ -112,21 +131,31 @@ except requests.exceptions.ConnectionError:
 
 
 # Lấy danh sách task
-# try:
-#     # Chú ý 
-#     # ('search', default='', type=str)  # Tìm kiếm theo title
-#     # ('page', default=1, type=int)      # Trang hiện tại
-#     # ('per_page', default=10, type=int)  # Số task mỗi trang
+try:
+    # Chú ý 
+    # ('search', default='', type=str)  # Tìm kiếm theo title
+    # ('page', default=1, type=int)      # Trang hiện tại
+    # ('per_page', default=10, type=int)  # Số task mỗi trang
    
-#     get_response = requests.get(TASK_URL, headers=headers)
-#     print(f"Get tasks status: {get_response .status_code}")    # Kiểm tra status
-#     print(f"Get tasks response:", get_response .text)
+    get_response = requests.get(TASK_URL, headers=headers)
 
-#     if get_response.status_code == 200:  # Dùng 200 cho GET
-#         print("Result:", get_response.json())
+    print(f" - Status: {get_response.status_code}")
+    print(f" - Tasks count: {len(get_response.json()['tasks'])}")
+    print("-" * 50)
+    if get_response.status_code == 200:  # Dùng 200 cho GET
+        print("Result:", get_response.json())
+    else:
+        print(f"Get tasks failed: {get_response.text}")
+except requests.exceptions.ConnectionError:
+    print(f"Cannot connect to {TASK_URL}")
+    exit()
+
+#  if response.status_code == 200:
+#         try:
+#             data = response.json()  # Chỉ parse JSON nếu response hợp lệ
+#             print("Dữ liệu JSON:", data)
+#         except requests.exceptions.JSONDecodeError:
+#             print("Lỗi: Response không phải JSON hợp lệ")
+#             print("Nội dung thực tế:", response.text)
 #     else:
-#         print(f"Get tasks failed: {get_response.text}")
-# except requests.exceptions.ConnectionError:
-#     print(f"Cannot connect to {TASK_URL}")
-#     exit()
-
+#         print(f"Lỗi HTTP {response.status_code}: {response.text}")
