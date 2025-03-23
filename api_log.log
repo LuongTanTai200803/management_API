@@ -1,0 +1,31 @@
+2025-03-23 20:28:50,235 - INFO - 127.0.0.1 - - [23/Mar/2025 20:28:50] "POST /api/auth/login HTTP/1.1" 200 -
+2025-03-23 20:28:50,238 - ERROR - Access denied - Role mismatch. User role: user, Required role: admin
+2025-03-23 20:28:50,238 - INFO - 127.0.0.1 - - [23/Mar/2025 20:28:50] "[31m[1mPUT /api/admin/setrole HTTP/1.1[0m" 403 -
+2025-03-23 20:35:26,304 - INFO -  * Detected change in '/home/kaijuzz/Desktop/Project/scripts.py', reloading
+2025-03-23 20:35:26,448 - INFO -  * Restarting with stat
+2025-03-23 20:35:26,959 - WARNING -  * Debugger is active!
+2025-03-23 20:35:26,961 - INFO -  * Debugger PIN: 191-583-087
+2025-03-23 20:35:32,716 - INFO - 127.0.0.1 - - [23/Mar/2025 20:35:32] "POST /api/auth/login HTTP/1.1" 200 -
+2025-03-23 20:35:32,720 - ERROR - Access denied - Role mismatch. User role: user, Required role: admin
+2025-03-23 20:35:32,720 - INFO - 127.0.0.1 - - [23/Mar/2025 20:35:32] "[31m[1mPUT /api/admin/setrole HTTP/1.1[0m" 403 -
+2025-03-23 20:36:28,443 - INFO -  * Detected change in '/home/kaijuzz/Desktop/Project/app/routes/admin.py', reloading
+2025-03-23 20:36:28,634 - INFO -  * Restarting with stat
+2025-03-23 20:36:29,238 - WARNING -  * Debugger is active!
+2025-03-23 20:36:29,241 - INFO -  * Debugger PIN: 191-583-087
+2025-03-23 20:36:32,273 - INFO -  * Detected change in '/home/kaijuzz/Desktop/Project/scripts.py', reloading
+2025-03-23 20:36:32,389 - INFO -  * Restarting with stat
+2025-03-23 20:36:32,881 - WARNING -  * Debugger is active!
+2025-03-23 20:36:32,882 - INFO -  * Debugger PIN: 191-583-087
+2025-03-23 20:36:35,175 - INFO - 127.0.0.1 - - [23/Mar/2025 20:36:35] "POST /api/auth/login HTTP/1.1" 200 -
+2025-03-23 20:36:35,177 - INFO - Request - Endpoint: /api/admin/setrole | Method: PUT | User: Khải
+2025-03-23 20:36:35,177 - INFO - Success - Endpoint: /api/admin/setrole | Method: PUT | Response: {
+  "message": "Invalid requets data"
+}
+
+2025-03-23 20:36:35,178 - INFO - 127.0.0.1 - - [23/Mar/2025 20:36:35] "[31m[1mPUT /api/admin/setrole HTTP/1.1[0m" 400 -
+2025-03-23 20:56:12,875 - INFO -  * Detected change in '/home/kaijuzz/Desktop/Project/app/routes/test.py', reloading
+2025-03-23 20:56:13,015 - INFO -  * Restarting with stat
+2025-03-23 20:56:13,488 - WARNING -  * Debugger is active!
+2025-03-23 20:56:13,490 - INFO -  * Debugger PIN: 191-583-087
+2025-03-23 20:57:01,879 - INFO -  * Detected change in '/home/kaijuzz/Desktop/Project/app/__init__.py', reloading
+2025-03-23 20:57:02,011 - INFO -  * Restarting with stat

@@ -1,9 +1,10 @@
 from flask import Blueprint, jsonify, request
-from flask_jwt_extended import jwt_required
-import app
+from flask_jwt_extended import get_jwt, get_jwt_identity, jwt_required
+# from app.error_handlers import register_error_handlers
 from app.models.models import User
-from app.utils.decorators import role_required
+from app.utils.decorators import api_handler, role_required
 from app.extensions import db
+from app.exceptions import BadRequestException, NotFoundException
 
 admin_bp = Blueprint("admin", __name__)
 
@@ -22,21 +23,20 @@ def user():
 # admin set role
 @admin_bp.route("/setrole", methods=["PUT"])
 @jwt_required()
-@role_required("admin")  # Chỉ admin mới truy cập được
+@role_required("user")  # Chỉ admin mới truy cập được
+@api_handler
 def admin_set_role():
+    current_user = get_jwt_identity() # Lấy username từ token
     data = request.get_json()
     # Chắc chắn có 2 trường dữ liệu username và role
-    if not data or "username" not in data or "role" not in data:
-        return jsonify({"message": "Invalid requets data"}), 400
+    if not data or "role" not in data:
+        raise BadRequestException("Invalid request data")
     
-    user = User.query.filter_by(username=data["username"]).first()
+    user = User.query.filter_by(username=current_user).first()
 
     if not user:
-        return jsonify({"message": "User not found"}), 404
+        raise NotFoundException("User not found")
     
-    VALID_ROLE = ["admin", "user", "guest"]
-    if data["role"] not in VALID_ROLE:
-        return jsonify({"message": "Invalid role"}), 400
     user.role = data.get("role")
     db.session.commit()
     return jsonify({"message": "Role updated"}), 201

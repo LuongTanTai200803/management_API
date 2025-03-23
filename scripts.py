@@ -12,6 +12,7 @@ TASK_URL_DELETE = f"{BASE_URL}/tasks/d9b821d2-e02c-47be-90b3-547a4e57e6a6"
 TASK_URL_DELETE_OVERDUE = f"{BASE_URL}/tasks/delete-overdue"
 TASK_CACHE = f"{BASE_URL}/tasks/cache"
 
+ADMIN_SET_ROLE = f"{BASE_URL}/admin/setrole"
 # register_payload = {"username": "Khải", "password": "123456"}
 # try:
 #     register_payload = requests.post(REGISTER_URL, json=register_payload)
@@ -59,45 +60,49 @@ due_date = (datetime.now(timezone.utc) + timedelta(hours=7) +timedelta(hours=8))
 # except requests.exceptions.ConnectionError:
 #     print(f"Cannot connect to {TASK_URL_DELETE_OVERDUE}")
 #     exit()
+update_role = {
+    "rol": "admin"
+}
 try:
     # Chú ý 
     # ('search', default='', type=str)  # Tìm kiếm theo title
     # ('page', default=1, type=int)      # Trang hiện tại
     # ('per_page', default=10, type=int)  # Số task mỗi trang
    
-    get_response = requests.get(TASK_URL, headers=headers)
+    admin_response = requests.put(ADMIN_SET_ROLE, headers=headers, json=update_role)
 
-    print(f" - Status: {get_response.status_code}")
-    print(f" - Tasks count: {len(get_response.json()['tasks'])}")
-    print("-" * 50)
-    if get_response.status_code == 200:  # Dùng 200 cho GET
-        print("Result:", get_response.json())
+    print(f"Tasks status: {admin_response .status_code}")    # Kiểm tra status
+    print(f"Tasks response:", admin_response .text)          # Kiểm tra dữ liệu trả về
+
+    if admin_response.status_code == 201:  # Dùng 201 cho thay đổi
+        print("Result:", admin_response.json())
     else:
-        print(f"Get tasks failed: {get_response.text}")
+        print(f"Tasks failed: {admin_response.text}")
 except requests.exceptions.ConnectionError:
-    print(f"Cannot connect to {TASK_URL}")
+    print(f"Cannot connect to {ADMIN_SET_ROLE}")
     exit()
+
 
 
 # Check API create_task   
-create_task = {
-    "title": "Cài đặt Flask-Caching", 
-    "status": "Đang làm",
-    "due_date": due_date
-}
-try:
-    create_task = requests.post(TASK_URL_CREATE, headers=headers, json=create_task)
+# create_task = {
+#     "title": "Cài đặt Flask-Caching", 
+#     "status": "Đang làm",
+#     "due_date": due_date
+# }
+# try:
+#     create_task = requests.post(TASK_URL_CREATE, headers=headers, json=create_task)
 
-    print(f"Tasks status: {create_task .status_code}")    # Kiểm tra status
-    print(f"Tasks response:", create_task .text)
+#     print(f"Tasks status: {create_task .status_code}")    # Kiểm tra status
+#     print(f"Tasks response:", create_task .text)
 
-    if create_task.status_code == 201:  # Dùng 201 cho GET
-        print("Result:", create_task.json())
-    else:
-        print(f"Tasks failed: {create_task.text}")
-except requests.exceptions.ConnectionError:
-    print(f"Cannot connect to {TASK_URL_CREATE}")
-    exit()
+#     if create_task.status_code == 201:  # Dùng 201 cho GET
+#         print("Result:", create_task.json())
+#     else:
+#         print(f"Tasks failed: {create_task.text}")
+# except requests.exceptions.ConnectionError:
+#     print(f"Cannot connect to {TASK_URL_CREATE}")
+#     exit()
 
 # Check API update_task   
 # update_task = {
@@ -131,24 +136,24 @@ except requests.exceptions.ConnectionError:
 
 
 # Lấy danh sách task
-try:
-    # Chú ý 
-    # ('search', default='', type=str)  # Tìm kiếm theo title
-    # ('page', default=1, type=int)      # Trang hiện tại
-    # ('per_page', default=10, type=int)  # Số task mỗi trang
+# try:
+#     # Chú ý 
+#     # ('search', default='', type=str)  # Tìm kiếm theo title
+#     # ('page', default=1, type=int)      # Trang hiện tại
+#     # ('per_page', default=10, type=int)  # Số task mỗi trang
    
-    get_response = requests.get(TASK_URL, headers=headers)
+#     get_response = requests.get(TASK_URL, headers=headers)
 
-    print(f" - Status: {get_response.status_code}")
-    print(f" - Tasks count: {len(get_response.json()['tasks'])}")
-    print("-" * 50)
-    if get_response.status_code == 200:  # Dùng 200 cho GET
-        print("Result:", get_response.json())
-    else:
-        print(f"Get tasks failed: {get_response.text}")
-except requests.exceptions.ConnectionError:
-    print(f"Cannot connect to {TASK_URL}")
-    exit()
+#     print(f" - Status: {get_response.status_code}")
+#     print(f" - Tasks count: {len(get_response.json()['tasks'])}")
+#     print("-" * 50)
+#     if get_response.status_code == 200:  # Dùng 200 cho GET
+#         print("Result:", get_response.json())
+#     else:
+#         print(f"Get tasks failed: {get_response.text}")
+# except requests.exceptions.ConnectionError:
+#     print(f"Cannot connect to {TASK_URL}")
+#     exit()
 
 #  if response.status_code == 200:
 #         try:
