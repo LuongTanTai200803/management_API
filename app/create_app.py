@@ -6,9 +6,9 @@ from .extensions import db, jwt, cache, mail
 from .celery_config import make_celery   
 from .error_handlers import register_error_handlers
 
-def create_app():
+def create_app(config_class=Config):
     app = Flask(__name__)
-    app.config.from_object(Config)
+    app.config.from_object(config_class)
 
     # Khởi tạo các extension
     db.init_app(app)

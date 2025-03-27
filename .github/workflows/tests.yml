@@ -35,3 +35,5 @@ jobs:
         env:
           SQLALCHEMY_DATABASE_URI: "sqlite:///:memory:" # Dùng SQLite in-memory
           FLASK_ENV: testing
+          JWT_SECRET_KEY: "super-secret_key"
+          SECRET_KEY: "super-secret_key"
