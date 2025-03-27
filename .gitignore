@@ -1,2 +1,5 @@
 .env
 settings.json
+api_log.log 
+scripts.py
+run.py
