@@ -1,5 +1,5 @@
 from collections import OrderedDict
-from flask import Blueprint, app, jsonify, request, Response, current_app
+from flask import Blueprint , jsonify, request, Response, current_app
 from flask_jwt_extended import get_jwt_identity, jwt_required, get_jwt
 from app.models.models import Task, User
 from app.extensions import db, cache

@@ -41,3 +41,22 @@ def admin_set_role():
     db.session.commit()
     return jsonify({"message": "Role updated"}), 201
 
+@admin_bp.route("/get", methods=["GET"])
+@jwt_required()
+@role_required("admin")  # Chỉ admin mới truy cập được
+@api_handler
+def admin_get_users():
+    current_user = get_jwt_identity() # Lấy username từ token
+
+    user = User.query.filter_by(username=current_user).first()
+    if not user:
+        raise NotFoundException("User not found")
+    
+    users = User.query.all()
+    response = [{
+        "id": u.id,
+        "username": u.username
+    } for u in users]
+
+    print(f"Header: {request.headers}")
+    return jsonify(response), 200

@@ -9,7 +9,7 @@ import logging
 if not logging.getLogger().hasHandlers():
     logging.basicConfig(
         filename='api_log.log',
-        level=logging.INFO,
+        level=logging.DEBUG,
         format='%(asctime)s - %(levelname)s - %(message)s'
     )
 
@@ -46,21 +46,27 @@ def api_handler(func):
         endpoint = request.path
         method = request.method
         user_id = get_jwt_identity()  # Lấy ID user từ token
+        result = None
         try:
             # Ghi log request
             logging.info(f"Request - Endpoint: {endpoint} | Method: {method} | User: {user_id}")
             # Thực thi hàm API
             result = func(*args, **kwargs)
 
-             # Kiểm tra nếu result là một tuple chứa (response, status_code)
+            # Kiểm tra nếu result là một tuple chứa (response, status_code)
             if isinstance(result, tuple) and len(result) == 2:
                 response, status_code = result
-                if isinstance(response, dict):  # Đảm bảo response là kiểu dictionary có thể jsonify
+                # Kiểm tra nếu response là một dict hay list
+                if isinstance(response, (dict, list)): 
                     response = jsonify(response)
                 # Ghi log thành công
                 logging.info(f"Success - Endpoint: {endpoint} | Method: {method} | Response: {response.get_data(as_text=True)}")
                 return response, status_code
             
+            if isinstance(result, list):
+                logging.info(f"Success - Endpoint: {endpoint} | Method: {method} | Response: {result}")
+                return jsonify(result)  # Trả về JSON list
+
             # Ghi log thành công
             logging.info(f"Success - Endpoint: {endpoint} | Method: {method} | Response: {result}")
             
@@ -72,7 +78,11 @@ def api_handler(func):
         
         except Exception as e:
             # Xử lý lỗi không mong muốn
-            logging.error(f"Unexpected Error - Endpoint: {endpoint} | Detail: {str(e)}")
+            # error_message = f"Unexpected Error - Endpoint: {endpoint} | Detail: {str(e)}"
+            # if result:
+            #     error_message += f" | Response: {result}"
+            # logging.error(error_message)
+            logging.error(f"Unexpected Error - Endpoint: {endpoint} | Detail: {str(e)} | Response: {result}")
             print(f"Error: {str(e)}")  # Debug lỗi
             print(f"Error: {str(e)} - Traceback: {traceback.format_exc()}")
             # response = Response(

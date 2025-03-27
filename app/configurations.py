@@ -48,3 +48,7 @@ class Config:
         'schedule': 30.0,  # Chạy mỗi giờ (3600 giây)
     },
     } 
+
+class TestingConfig(Config):
+    TESTING = True
+    SQLALCHEMY_DATABASE_URI = "sqlite:///:memory:"  # Hoặc PostgreSQL test DB

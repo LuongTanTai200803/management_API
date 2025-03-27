@@ -1,6 +1,6 @@
 from flask import jsonify
 import logging
-from exceptions import APIException
+from .exceptions import APIException
 from werkzeug.exceptions import BadRequest, MethodNotAllowed, Unauthorized
 from sqlalchemy.exc import IntegrityError, SQLAlchemyError
 import traceback
