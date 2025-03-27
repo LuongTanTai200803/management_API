@@ -24,8 +24,8 @@ def role_required(required_role):
         def wrapper(*args, **kwargs):
             claims = get_jwt()     # Lấy thông tin từ JWT token
             # Kiểm tra vai trò
-            if claims.get("role") != required_role:
-                logging.error(f"Access denied - Role mismatch. User role: {claims.get("role")}, Required role: {required_role}")
+            if (claims.get("role") != required_role):
+                logging.error(f"Access denied - Role mismatch. User role: {claims.get('role')}, Required role: {required_role}")
                 return jsonify({"message": "Access forbidden",
                                 "current role": claims.get("role"),
                                 "current role required": required_role
