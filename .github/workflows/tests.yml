@@ -1,1 +1,33 @@
+name: Run Tests
 
+# Trigger workflow khi push hoặc pull request vào branch main
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest # Hệ điều hành để chạy job, bạn có thể thay đổi nếu cần
+
+    steps:
+      # Checkout code từ repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Cài đặt môi trường (ví dụ: Node.js, Python, tùy ngôn ngữ bạn dùng)
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16' # Thay đổi phiên bản nếu cần
+
+      # Cài đặt dependencies
+      - name: Install Dependencies
+        run: npm install # Thay bằng lệnh phù hợp với dự án của bạn, ví dụ: pip install -r requirements.txt
+
+      # Chạy test
+      - name: Run Tests
+        run: npm test # Thay bằng lệnh chạy test của bạn, ví dụ: pytest, ./gradlew test
