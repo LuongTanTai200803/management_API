@@ -31,4 +31,5 @@ jobs:
           pip install -r requirements.txt
       # Chạy test
       - name: Run Tests
-        run: pytest tests/ # Thay bằng lệnh chạy test của bạn, ví dụ: pytest, ./gradlew test
+        run:  pytest app/tests/unit/test_routes_unit.py # Thay bằng lệnh chạy test của bạn, ví dụ: pytest, ./gradlew test
+        
