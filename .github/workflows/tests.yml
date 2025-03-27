@@ -19,15 +19,16 @@ jobs:
         uses: actions/checkout@v3
 
       # Cài đặt môi trường (ví dụ: Node.js, Python, tùy ngôn ngữ bạn dùng)
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - name: Setup Python
+        uses: actions/setup-python@v4
         with:
-          node-version: '16' # Thay đổi phiên bản nếu cần
+          python-version: '3.9' # Thay đổi phiên bản nếu cần
 
       # Cài đặt dependencies
       - name: Install Dependencies
-        run: npm install # Thay bằng lệnh phù hợp với dự án của bạn, ví dụ: pip install -r requirements.txt
-
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
       # Chạy test
       - name: Run Tests
-        run: npm test # Thay bằng lệnh chạy test của bạn, ví dụ: pytest, ./gradlew test
+        run: pytest tests/ # Thay bằng lệnh chạy test của bạn, ví dụ: pytest, ./gradlew test
