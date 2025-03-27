@@ -32,4 +32,6 @@ jobs:
       # Chạy test
       - name: Run Tests
         run:  pytest app/tests/unit/test_routes_unit.py # Thay bằng lệnh chạy test của bạn, ví dụ: pytest, ./gradlew test
-        
+        env:
+          SQLALCHEMY_DATABASE_URI: "sqlite:///:memory:" # Dùng SQLite in-memory
+          FLASK_ENV: testing
