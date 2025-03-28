@@ -7,14 +7,17 @@ load_dotenv()
 class Config:
     SECRET_KEY = os.getenv("SECRET_KEY")
     SQLALCHEMY_DATABASE_URI = os.getenv("SQLALCHEMY_DATABASE_URI")
+    REDIS_URL = os.getenv("REDIS_URL")
 
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     JWT_SECRET_KEY = os.getenv("SECRET_KEY")
+
     MAIL_SERVER = os.getenv("MAIL_SERVER")
     MAIL_PORT = os.getenv("MAIL_PORT")
     MAIL_USERNAME = os.getenv("MAIL_USERNAME")
     MAIL_PASSWORD = os.getenv("MAIL_PASSWORD")
     MAIL_DEFAULT_SENDER = os.getenv("MAIL_DEFAULT_SENDER")
+
     JWT_ACCESS_TOKEN_EXPIRES = timedelta(minutes=15)  # Access Token hết hạn sau 15 phút
     JWT_REFRESH_TOKEN_EXPIRES = timedelta(days=30)  # Refresh Token hết hạn sau 30 ngày
     JSONIFY_PRETTYPRINT_REGULAR = True  # Định dạng JSON đẹp

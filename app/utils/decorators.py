@@ -1,18 +1,11 @@
 from functools import wraps
 import json
+import logging
 import traceback
 from flask_jwt_extended import get_jwt_identity, get_jwt
 from flask import Response, current_app, jsonify, request
-import logging
 
-# Cấu hình logging
-if not logging.getLogger().hasHandlers():
-    logging.basicConfig(
-        filename='api_log.log',
-        level=logging.DEBUG,
-        format='%(asctime)s - %(levelname)s - %(message)s'
-    )
-
+# logging = logging.getlogging("api_logging")
 
 def role_required(required_role):
     """

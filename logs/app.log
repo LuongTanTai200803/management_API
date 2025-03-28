@@ -1,0 +1,63 @@
+2025-03-28 15:08:32,443 - INFO - api_logger - Flask app đã khởi động.
+2025-03-28 15:08:32,465 - INFO - api_logger - Flask app đã khởi động.
+2025-03-28 15:08:40,593 - INFO - root - API Request: POST /api/auth/login - Data: {'username': 'ADMIN', 'password': '123456'}
+2025-03-28 15:08:40,593 - INFO - root - Login request received: {'username': 'ADMIN', 'password': '123456'}
+2025-03-28 15:20:03,835 - INFO - api_logger - Flask app đã khởi động.
+2025-03-28 15:20:03,853 - INFO - api_logger - Flask app đã khởi động.
+2025-03-28 15:20:08,806 - INFO - root - API Request: POST /api/auth/login - Data: {'username': 'ADMIN', 'password': '123456'}
+2025-03-28 15:20:08,806 - INFO - root - Login request received: {'username': 'ADMIN', 'password': '123456'}
+2025-03-28 15:21:13,551 - INFO - api_logger - Flask app đã khởi động.
+2025-03-28 15:21:13,569 - INFO - api_logger - Flask app đã khởi động.
+2025-03-28 15:21:17,602 - INFO - root - API Request: POST /api/auth/login - Data: {'username': 'ADMIN', 'password': '123456'}
+2025-03-28 15:21:17,602 - INFO - root - Login request received: {'username': 'ADMIN', 'password': '123456'}
+2025-03-28 15:29:12,974 - INFO - api_logger - Flask app đã khởi động.
+2025-03-28 15:29:12,991 - INFO - api_logger - Flask app đã khởi động.
+2025-03-28 15:29:53,307 - INFO - root - API Request: POST /api/auth/login - Data: {'username': 'ADMIN', 'password': '123456'}
+2025-03-28 15:29:53,307 - INFO - root - Login request received: {'username': 'ADMIN', 'password': '123456'}
+2025-03-28 15:39:15,055 - INFO - api_logger - Flask app đã khởi động.
+2025-03-28 15:39:15,073 - INFO - api_logger - Flask app đã khởi động.
+2025-03-28 16:00:33,015 - INFO - root - API Request: POST /api/auth/login - Data: {'username': 'ADMIN', 'password': '123456'}
+2025-03-28 16:00:33,015 - INFO - root - Login request received: {'username': 'ADMIN', 'password': '123456'}
+2025-03-28 16:00:33,015 - DEBUG - root - msg: ADMIN & 123456
+2025-03-28 16:25:22,534 - INFO - root - API Request: POST /api/auth/register - Data: {'username': 'ADMIN', 'password': '123456'}
+2025-03-28 16:32:48,283 - INFO - root - API Request: POST /api/auth/register - Data: {'username': 'ADMIN', 'password': '123456'}
+2025-03-28 16:33:02,884 - INFO - root - API Request: POST /api/auth/register - Data: {'username': 'ADMIN', 'password': '123456'}
+2025-03-28 16:43:58,688 - INFO - root - API Request: POST /api/auth/register - Data: {'username': 'ADMIN', 'password': '123456'}
+2025-03-28 16:45:20,244 - INFO - root - API Request: POST /api/auth/register - Data: {'username': 'ADMIN', 'password': '123456'}
+2025-03-28 16:52:27,731 - INFO - root - API Request: POST /api/auth/register - Data: {'username': 'ADMIN', 'password': '123456'}
+2025-03-28 16:54:51,908 - INFO - root - API Request: POST /api/auth/register - Data: {'username': 'ADMIN', 'password': '123456'}
+2025-03-28 16:55:23,999 - INFO - root - API Request: POST /api/auth/login - Data: {'username': 'Khải', 'password': '123456'}
+2025-03-28 16:55:23,999 - INFO - root - Login request received: {'username': 'Khải', 'password': '123456'}
+2025-03-28 16:55:23,999 - DEBUG - root - msg: Khải & 123456
+2025-03-28 17:04:05,826 - INFO - api_logger - Flask app đã khởi động.
+2025-03-28 17:04:05,843 - INFO - api_logger - Flask app đã khởi động.
+2025-03-28 17:04:32,910 - INFO - root - API Request: POST /api/auth/register - Data: {'username': 'ADMIN', 'password': '123456'}
+2025-03-28 17:04:32,910 - DEBUG - root - Registration information: ADMIN & 123456
+2025-03-28 17:04:33,019 - INFO - root - User ADMIN Register in successfully
+2025-03-28 17:05:31,788 - INFO - root - API Request: POST /api/auth/register - Data: {'username': 'ADMIN', 'password': '123456'}
+2025-03-28 17:05:31,789 - DEBUG - root - Registration information: ADMIN & 123456
+2025-03-28 17:05:31,791 - INFO - root - User already exists
+2025-03-28 17:05:46,619 - INFO - root - API Request: POST /api/auth/register - Data: {'username': 'ADMIN', 'password': '123456'}
+2025-03-28 17:05:46,619 - DEBUG - root - Registration information: ADMIN & 123456
+2025-03-28 17:05:46,620 - INFO - root - User already exists
+2025-03-28 17:05:59,616 - INFO - root - API Request: POST /api/auth/register - Data: {'username': 'ADMIN', 'password': '123456'}
+2025-03-28 17:05:59,616 - DEBUG - root - Registration information: ADMIN & 123456
+2025-03-28 17:05:59,617 - INFO - root - User already exists
+2025-03-28 17:10:33,105 - INFO - api_logger - Flask app đã khởi động.
+2025-03-28 17:10:33,121 - INFO - api_logger - Flask app đã khởi động.
+2025-03-28 17:10:38,180 - INFO - root - API Request: POST /api/auth/register - Data: {'username': 'ADMIN', 'password': '123456'}
+2025-03-28 17:10:38,181 - DEBUG - root - Registration information: ADMIN & 123456
+2025-03-28 17:10:38,290 - INFO - root - User ADMIN Register in successfully
+2025-03-28 17:10:48,611 - INFO - root - API Request: POST /api/auth/register - Data: {'username': 'ADMIN', 'password': '123456'}
+2025-03-28 17:10:48,611 - DEBUG - root - Registration information: ADMIN & 123456
+2025-03-28 17:10:48,612 - WARNING - root - User already exists
+2025-03-28 17:11:48,980 - INFO - root - API Request: POST /api/auth/login - Data: {'username': 'Khải', 'password': '123456'}
+2025-03-28 17:11:48,980 - INFO - root - Login request received: {'username': 'Khải', 'password': '123456'}
+2025-03-28 17:11:48,980 - DEBUG - root - msg: Khải & 123456
+2025-03-28 17:11:48,981 - WARNING - root - Login failed: username not correct
+2025-03-28 17:12:32,133 - INFO - root - API Request: POST /api/auth/login - Data: {'username': 'ADMIN', 'password': '123456'}
+2025-03-28 17:12:32,134 - INFO - root - Login request received: {'username': 'ADMIN', 'password': '123456'}
+2025-03-28 17:12:32,134 - DEBUG - root - msg: ADMIN & 123456
+2025-03-28 17:12:32,230 - INFO - root - User ADMIN logged in successfully
+2025-03-28 17:12:32,233 - INFO - root - Tokens generated for ADMIN: Access token - eyJhbGciOi...
+2025-03-28 17:12:50,083 - WARNING - root - Bad Request - Detail: 400 Bad Request: Failed to decode JSON object: Expecting value: line 4 column 1 (char 43)
