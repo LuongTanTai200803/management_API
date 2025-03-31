@@ -3,7 +3,7 @@ import os
 from flask import Flask, request
 from flask_migrate import Migrate
 
-from .exceptions import BadRequest
+from app.exceptions import BadRequest
 from .configurations import Config
 from .extensions import db, jwt, cache, mail 
 from .celery_config import make_celery   
@@ -45,8 +45,7 @@ def create_app(config_class=Config):
 
     app = Flask(__name__)
     app.config.from_object(config_class)
-    #app.config["DEBUG"] = True  # Bật debug mode (Chỉ khi phát triển)
-    print("🛠 Using config:", app.config["SQLALCHEMY_DATABASE_URI"])
+    app.config["DEBUG"] = True  # Bật debug mode (Chỉ khi phát triển)
 
     # Khởi tạo các extension
     db.init_app(app)
@@ -81,9 +80,9 @@ def create_app(config_class=Config):
     register_routes(app)
  
     
-    with app.app_context():
-        if not os.getenv("TESTING"):  # Chỉ tạo table nếu không phải môi trường test
-            db.create_all()
+    #with app.app_context():
+     #   if not os.getenv("TESTING"):  # Chỉ tạo table nếu không phải môi trường test
+      #      db.create_all()
             
     logger.info("Flask app đã khởi động.")
     return app, celery, migrate
