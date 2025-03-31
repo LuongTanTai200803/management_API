@@ -3,7 +3,7 @@ import os
 from flask import Flask, request
 from flask_migrate import Migrate
 
-from app.exceptions import BadRequest
+from .exceptions import BadRequest
 from .configurations import Config
 from .extensions import db, jwt, cache, mail 
 from .celery_config import make_celery   
@@ -45,7 +45,8 @@ def create_app(config_class=Config):
 
     app = Flask(__name__)
     app.config.from_object(config_class)
-    app.config["DEBUG"] = True  # Bật debug mode (Chỉ khi phát triển)
+    #app.config["DEBUG"] = True  # Bật debug mode (Chỉ khi phát triển)
+    print("🛠 Using config:", app.config["SQLALCHEMY_DATABASE_URI"])
 
     # Khởi tạo các extension
     db.init_app(app)
