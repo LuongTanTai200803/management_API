@@ -8,10 +8,6 @@ from flask import Response, current_app, jsonify, request
 # logging = logging.getlogging("api_logging")
 
 def role_required(required_role):
-    """
-    Decorator kiểm tra vai trò của user dựa trên JWT claims.
-    :param required_role: Vai trò cần thiết để truy cập (e.g., 'admin', 'user')
-    """
     def decorator(fn):
         @wraps(fn)
         def wrapper(*args, **kwargs):
@@ -30,10 +26,6 @@ def role_required(required_role):
     return decorator
 
 def api_handler(func):
-    """
-    Decorator xử lý logging và error handling cho API endpoints.
-    """
-   
     @wraps(func)
     def wrapper(*args, **kwargs):
         endpoint = request.path

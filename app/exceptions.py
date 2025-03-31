@@ -1,5 +1,4 @@
 class APIException(Exception):
-    """Lỗi API chung, tất cả lỗi khác sẽ kế thừa class này."""
     def __init__(self, message, status_code=400):
         super().__init__(message)
         self.message = message
@@ -7,6 +6,9 @@ class APIException(Exception):
 
 class BadRequestException(APIException):
     def __init__(self, message="Yêu cầu không hợp lệ"):
+        super().__init__(message, 400)
+class BadRequest(APIException):
+    def __init__(self, message="Request not invalid"):
         super().__init__(message, 400)
 
 class UnauthorizedException(APIException):

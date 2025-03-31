@@ -61,3 +61,141 @@
 2025-03-28 17:12:32,230 - INFO - root - User ADMIN logged in successfully
 2025-03-28 17:12:32,233 - INFO - root - Tokens generated for ADMIN: Access token - eyJhbGciOi...
 2025-03-28 17:12:50,083 - WARNING - root - Bad Request - Detail: 400 Bad Request: Failed to decode JSON object: Expecting value: line 4 column 1 (char 43)
+2025-03-30 15:05:45,001 - INFO - api_logger - Flask app đã khởi động.
+2025-03-30 15:05:45,021 - INFO - api_logger - Flask app đã khởi động.
+2025-03-30 15:06:26,506 - WARNING - root - Bad Request - Detail: 400 Bad Request: Failed to decode JSON object: Expecting value: line 4 column 1 (char 43)
+2025-03-30 15:06:49,148 - INFO - root - API Request: POST /api/auth/login - Data: {'username': 'ADMIN', 'password': '123456'}
+2025-03-30 15:06:49,148 - INFO - root - Login request received: {'username': 'ADMIN', 'password': '123456'}
+2025-03-30 15:06:49,148 - DEBUG - root - msg: ADMIN & 123456
+2025-03-30 15:06:49,156 - WARNING - root - Login failed: username not correct
+2025-03-30 15:07:00,989 - WARNING - root - Bad Request - Detail: 400 Bad Request: Failed to decode JSON object: Expecting value: line 4 column 1 (char 44)
+2025-03-30 15:07:08,555 - INFO - root - API Request: POST /api/auth/register - Data: {'username': 'ADMIN', 'password': '123456'}
+2025-03-30 15:07:08,555 - DEBUG - root - Registration information: ADMIN & 123456
+2025-03-30 15:07:08,657 - INFO - root - User ADMIN Register in successfully
+2025-03-30 15:07:40,632 - INFO - root - API Request: POST /api/auth/register - Data: {'username': 'ADMIN', 'password': '123456'}
+2025-03-30 15:07:40,632 - DEBUG - root - Registration information: ADMIN & 123456
+2025-03-30 15:07:40,633 - WARNING - root - User already exists
+2025-03-30 15:07:57,807 - INFO - root - API Request: POST /api/auth/register - Data: {'username': 'Khai', 'password': '123456'}
+2025-03-30 15:07:57,807 - DEBUG - root - Registration information: Khai & 123456
+2025-03-30 15:07:57,908 - INFO - root - User Khai Register in successfully
+2025-03-30 15:09:07,365 - INFO - root - API Request: POST /api/auth/register - Data: {'username': 'Tai', 'password': '123456'}
+2025-03-30 15:09:07,365 - DEBUG - root - Registration information: Tai & 123456
+2025-03-30 15:09:07,458 - INFO - root - User Tai Register in successfully
+2025-03-30 15:09:43,216 - INFO - api_logger - Flask app đã khởi động.
+2025-03-30 15:09:43,234 - INFO - api_logger - Flask app đã khởi động.
+2025-03-30 15:09:46,899 - INFO - root - API Request: POST /api/auth/login - Data: {'username': 'ADMIN', 'password': '123456'}
+2025-03-30 15:09:46,899 - INFO - root - Login request received: {'username': 'ADMIN', 'password': '123456'}
+2025-03-30 15:09:46,899 - DEBUG - root - msg: ADMIN & 123456
+2025-03-30 15:09:46,908 - WARNING - root - Login failed: username not correct
+2025-03-30 15:09:51,443 - INFO - root - API Request: POST /api/auth/register - Data: {'username': 'Tai', 'password': '123456'}
+2025-03-30 15:09:51,443 - ERROR - root - Registration information: Tai & 123456
+2025-03-30 15:09:51,540 - INFO - root - User Tai Register in successfully
+2025-03-30 15:21:15,606 - WARNING - root - Bad Request - Detail: 400 Bad Request: Failed to decode JSON object: Expecting value: line 4 column 1 (char 42)
+2025-03-30 15:22:21,493 - WARNING - root - Bad Request - Detail: 400 Bad Request: Failed to decode JSON object: Expecting value: line 4 column 1 (char 42)
+2025-03-30 15:24:03,351 - INFO - root - API Request: POST /api/auth/login - Data: {'username': 'ADMIN', 'password': '123456'}
+2025-03-30 15:24:03,351 - INFO - root - Login request received: {'username': 'ADMIN', 'password': '123456'}
+2025-03-30 15:24:03,351 - DEBUG - root - msg: ADMIN & 123456
+2025-03-30 15:24:03,352 - WARNING - root - Login failed: username not correct
+2025-03-30 15:24:54,306 - INFO - root - API Request: POST /api/auth/login - Data: {'username': 'ADMIN', 'password': '123456'}
+2025-03-30 15:24:54,306 - INFO - root - Login request received: {'username': 'ADMIN', 'password': '123456'}
+2025-03-30 15:24:54,306 - DEBUG - root - msg: ADMIN & 123456
+2025-03-30 15:24:54,307 - WARNING - root - Login failed: username not correct
+2025-03-30 15:28:35,978 - INFO - api_logger - Flask app đã khởi động.
+2025-03-30 15:28:35,997 - INFO - api_logger - Flask app đã khởi động.
+2025-03-30 15:29:14,613 - INFO - api_logger - Flask app đã khởi động.
+2025-03-30 15:29:14,629 - INFO - api_logger - Flask app đã khởi động.
+2025-03-30 15:29:21,989 - WARNING - root - Bad Request - Detail: 400 Bad Request: Failed to decode JSON object: Expecting value: line 4 column 1 (char 42)
+2025-03-30 15:30:23,905 - WARNING - root - Bad Request - Detail: 400 Bad Request: Failed to decode JSON object: Expecting value: line 4 column 1 (char 42)
+2025-03-30 15:34:09,189 - WARNING - root - Bad Request - Detail: 400 Bad Request: Failed to decode JSON object: Expecting value: line 4 column 1 (char 42)
+2025-03-30 15:35:08,536 - INFO - api_logger - Flask app đã khởi động.
+2025-03-30 15:35:08,538 - INFO - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.22.0.4:5000
+2025-03-30 15:35:08,538 - INFO - werkzeug - [33mPress CTRL+C to quit[0m
+2025-03-30 15:35:08,539 - INFO - werkzeug -  * Restarting with stat
+2025-03-30 15:35:09,009 - INFO - api_logger - Flask app đã khởi động.
+2025-03-30 15:35:38,259 - WARNING - root - Bad Request - Detail: 400 Bad Request: The browser (or proxy) sent a request that this server could not understand.
+2025-03-30 15:35:38,260 - INFO - werkzeug - 172.22.0.1 - - [30/Mar/2025 15:35:38] "[31m[1mPOST /api/auth/register HTTP/1.1[0m" 400 -
+2025-03-30 15:36:56,820 - INFO - root - API Request: POST /api/auth/register - Data: {'username': 'Tai', 'password': '123456'}
+2025-03-30 15:36:56,820 - ERROR - root - Registration information: Tai & 123456
+2025-03-30 15:36:56,945 - INFO - root - User Tai Register in successfully
+2025-03-30 15:36:56,946 - INFO - werkzeug - 172.22.0.1 - - [30/Mar/2025 15:36:56] "[35m[1mPOST /api/auth/register HTTP/1.1[0m" 201 -
+2025-03-30 15:37:18,957 - INFO - root - API Request: POST /api/auth/register - Data: {'username': 'Tai', 'password': '123456'}
+2025-03-30 15:37:18,957 - ERROR - root - Registration information: Tai & 123456
+2025-03-30 15:37:18,959 - WARNING - root - User already exists
+2025-03-30 15:37:18,960 - INFO - werkzeug - 172.22.0.1 - - [30/Mar/2025 15:37:18] "[31m[1mPOST /api/auth/register HTTP/1.1[0m" 400 -
+2025-03-30 15:37:48,647 - INFO - werkzeug -  * Detected change in '/app/app/routes/auth.py', reloading
+2025-03-30 15:37:48,757 - INFO - werkzeug -  * Restarting with stat
+2025-03-30 15:37:49,220 - INFO - api_logger - Flask app đã khởi động.
+2025-03-30 15:38:06,287 - INFO - werkzeug -  * Detected change in '/app/app/routes/auth.py', reloading
+2025-03-30 15:38:06,412 - INFO - werkzeug -  * Restarting with stat
+2025-03-30 15:38:06,943 - INFO - api_logger - Flask app đã khởi động.
+2025-03-30 15:38:09,294 - INFO - root - API Request: POST /api/auth/register - Data: {'username': 'Tai', 'password': '123456'}
+2025-03-30 15:38:09,302 - WARNING - root - User already exists
+2025-03-30 15:38:09,304 - INFO - werkzeug - 172.22.0.1 - - [30/Mar/2025 15:38:09] "[31m[1mPOST /api/auth/register HTTP/1.1[0m" 400 -
+2025-03-30 15:46:31,879 - INFO - api_logger - Flask app đã khởi động.
+2025-03-30 15:46:31,896 - INFO - api_logger - Flask app đã khởi động.
+2025-03-30 15:46:55,349 - WARNING - root - Bad Request - Detail: 400 Bad Request: Failed to decode JSON object: Expecting value: line 4 column 1 (char 42)
+2025-03-30 15:49:03,790 - INFO - api_logger - Flask app đã khởi động.
+2025-03-30 15:49:03,807 - INFO - api_logger - Flask app đã khởi động.
+2025-03-30 15:49:06,543 - ERROR - root - Bad Request - Detail: 400 Bad Request: Failed to decode JSON object: Expecting value: line 4 column 1 (char 42)
+2025-03-30 15:49:32,705 - INFO - api_logger - Flask app đã khởi động.
+2025-03-30 15:49:32,722 - INFO - api_logger - Flask app đã khởi động.
+2025-03-30 15:57:58,497 - INFO - api_logger - Flask app đã khởi động.
+2025-03-30 15:57:58,513 - INFO - api_logger - Flask app đã khởi động.
+2025-03-30 15:58:20,459 - INFO - api_logger - Flask app đã khởi động.
+2025-03-30 15:58:20,476 - INFO - api_logger - Flask app đã khởi động.
+2025-03-30 15:58:29,187 - INFO - api_logger - Flask app đã khởi động.
+2025-03-30 15:58:29,204 - INFO - api_logger - Flask app đã khởi động.
+2025-03-30 15:58:30,914 - INFO - api_logger - Flask app đã khởi động.
+2025-03-30 15:58:30,929 - INFO - api_logger - Flask app đã khởi động.
+2025-03-30 16:05:58,821 - INFO - api_logger - Flask app đã khởi động.
+2025-03-30 16:05:58,835 - INFO - api_logger - Flask app đã khởi động.
+2025-03-30 16:06:12,576 - INFO - api_logger - Flask app đã khởi động.
+2025-03-30 16:06:12,594 - INFO - api_logger - Flask app đã khởi động.
+2025-03-30 16:06:16,299 - WARNING - root - Bad Request - Detail: 400 Bad Request: Failed to decode JSON object: Expecting value: line 4 column 1 (char 42)
+2025-03-30 16:07:04,650 - INFO - api_logger - Flask app đã khởi động.
+2025-03-30 16:07:04,667 - INFO - api_logger - Flask app đã khởi động.
+2025-03-30 16:07:05,353 - WARNING - root - Bad Request - Detail: 400 Bad Request: Failed to decode JSON object: Expecting value: line 4 column 1 (char 42)
+2025-03-30 16:08:51,188 - INFO - api_logger - Flask app đã khởi động.
+2025-03-30 16:08:51,203 - INFO - api_logger - Flask app đã khởi động.
+2025-03-30 16:08:53,218 - WARNING - root - Bad Request - Detail: 400 Bad Request: Failed to decode JSON object: Expecting value: line 4 column 1 (char 42)
+2025-03-30 16:16:09,447 - INFO - api_logger - Flask app đã khởi động.
+2025-03-30 16:16:09,464 - INFO - api_logger - Flask app đã khởi động.
+2025-03-30 16:16:11,236 - WARNING - root - Bad Request - Detail: 400 Bad Request: Failed to decode JSON object: Expecting value: line 4 column 1 (char 42)
+2025-03-31 07:04:14,239 - INFO - api_logger - Flask app đã khởi động.
+2025-03-31 07:04:14,261 - INFO - api_logger - Flask app đã khởi động.
+2025-03-31 07:04:15,344 - INFO - api_logger - Flask app đã khởi động.
+2025-03-31 07:04:15,362 - INFO - api_logger - Flask app đã khởi động.
+2025-03-31 07:04:15,402 - INFO - api_logger - Flask app đã khởi động.
+2025-03-31 07:04:15,419 - INFO - api_logger - Flask app đã khởi động.
+2025-03-31 07:04:15,452 - INFO - api_logger - Flask app đã khởi động.
+2025-03-31 07:04:15,468 - INFO - api_logger - Flask app đã khởi động.
+2025-03-31 07:04:15,517 - INFO - api_logger - Flask app đã khởi động.
+2025-03-31 07:04:15,532 - INFO - api_logger - Flask app đã khởi động.
+2025-03-31 07:04:57,920 - INFO - api_logger - Flask app đã khởi động.
+2025-03-31 07:04:57,937 - INFO - api_logger - Flask app đã khởi động.
+2025-03-31 07:05:56,884 - INFO - api_logger - Flask app đã khởi động.
+2025-03-31 07:05:56,889 - INFO - api_logger - Flask app đã khởi động.
+2025-03-31 07:05:56,908 - INFO - api_logger - Flask app đã khởi động.
+2025-03-31 07:05:56,913 - INFO - api_logger - Flask app đã khởi động.
+2025-03-31 07:05:56,971 - INFO - api_logger - Flask app đã khởi động.
+2025-03-31 07:05:56,986 - INFO - api_logger - Flask app đã khởi động.
+2025-03-31 07:05:59,066 - INFO - api_logger - Flask app đã khởi động.
+2025-03-31 07:05:59,095 - INFO - api_logger - Flask app đã khởi động.
+2025-03-31 07:05:59,198 - INFO - api_logger - Flask app đã khởi động.
+2025-03-31 07:05:59,218 - INFO - api_logger - Flask app đã khởi động.
+2025-03-31 07:05:59,237 - INFO - api_logger - Flask app đã khởi động.
+2025-03-31 07:05:59,254 - INFO - api_logger - Flask app đã khởi động.
+2025-03-31 07:05:59,273 - INFO - api_logger - Flask app đã khởi động.
+2025-03-31 07:05:59,288 - INFO - api_logger - Flask app đã khởi động.
+2025-03-31 07:14:31,808 - INFO - api_logger - Flask app đã khởi động.
+2025-03-31 07:14:31,808 - INFO - api_logger - Flask app đã khởi động.
+2025-03-31 07:14:31,837 - INFO - api_logger - Flask app đã khởi động.
+2025-03-31 07:14:31,837 - INFO - api_logger - Flask app đã khởi động.
+2025-03-31 07:14:31,923 - INFO - api_logger - Flask app đã khởi động.
+2025-03-31 07:14:31,930 - INFO - api_logger - Flask app đã khởi động.
+2025-03-31 07:14:31,940 - INFO - api_logger - Flask app đã khởi động.
+2025-03-31 07:14:31,945 - INFO - api_logger - Flask app đã khởi động.
+2025-03-31 07:19:59,579 - WARNING - root - Not Found Error

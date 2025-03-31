@@ -2,13 +2,15 @@ import logging
 import os
 from flask import Flask, request
 from flask_migrate import Migrate
+
+from app.exceptions import BadRequest
 from .configurations import Config
 from .extensions import db, jwt, cache, mail 
 from .celery_config import make_celery   
 from .error_handlers import register_error_handlers
 
 def setup_logging():
-    """Cấu hình logging chi tiết"""
+    # Cấu hình log
     log_format = "%(asctime)s - %(levelname)s - %(name)s - %(message)s"
     # Đảm bảo các handler được khởi tạo
     app_log_handler =  logging.FileHandler("logs/app.log")
@@ -52,10 +54,20 @@ def create_app(config_class=Config):
     cache.init_app(app)
 
     # Middleware để log request API
+    #@app.before_request
+    #def log_request_info():
+       # logging.info(f"API Request: {request.method} {request.path} - Data: {request.get_json()}")
     @app.before_request
-    def log_request_info():
-        logging.info(f"API Request: {request.method} {request.path} - Data: {request.get_json()}")
-
+    def check_json():
+        if request.method in ["POST", "PUT", "PATCH"]:  # Chỉ kiểm tra với request có body
+            try:
+                if request.is_json:  # Kiểm tra header Content-Type: application/json
+                    request.get_json()  # Cố gắng parse JSON
+                else:
+                    raise BadRequest("Content-Type must be application/json")
+            except BadRequest as e:
+                logging.warning(f"Bad Request - Detail: {str(e)}")
+                return
     # Tạo Celery
     celery = make_celery(app)
     # Khởi tạo Flask-Migrate

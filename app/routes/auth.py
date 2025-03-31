@@ -28,12 +28,12 @@ def register():
     try:
         data = request.get_json()
         if not data:    # check missing data
-            logging.warning("Register attempt with missing JSON data")
+            logging.error("Register attempt with missing JSON data")
             return jsonify({"message": "Missing JSON data"}), 400
         
         username = data.get("username")
         password = data.get("password")
-        logging.debug(f"Registration information: {username} & {password}")
+        #logging.error(f"Registration information: {username} & {password}")
         if not username or not password:   # Yếu cầu có 2 thông tin 
             logging.error(f"Register failed: missing username or password")
             return jsonify({"message": "Username and password required"}), 400
@@ -65,7 +65,7 @@ def login():
         
         username = data.get("username")
         password = data.get("password")
-        logging.debug(f"msg: {username} & {password}")
+  
         if not username or not password:   # Yếu cầu có 2 thông tin 
             logging.error(f"Login failed: missing username or password")
             return jsonify({"message": "Username and password required"}), 400

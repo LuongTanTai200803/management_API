@@ -6,3 +6,7 @@
 2025-03-28 15:20:03,853 - INFO - api_logger - Flask app đã khởi động.
 2025-03-28 15:20:08,806 - INFO - root - API Request: POST /api/auth/login - Data: {'username': 'ADMIN', 'password': '123456'}
 2025-03-28 15:20:08,806 - INFO - root - Login request received: {'username': 'ADMIN', 'password': '123456'}
+2025-03-30 15:09:51,443 - ERROR - root - Registration information: Tai & 123456
+2025-03-30 15:36:56,820 - ERROR - root - Registration information: Tai & 123456
+2025-03-30 15:37:18,957 - ERROR - root - Registration information: Tai & 123456
+2025-03-30 15:49:06,543 - ERROR - root - Bad Request - Detail: 400 Bad Request: Failed to decode JSON object: Expecting value: line 4 column 1 (char 42)
