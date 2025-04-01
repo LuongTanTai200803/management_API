@@ -77,11 +77,19 @@ def create_app(config_class=Config):
 
     from .routes import register_routes
     register_routes(app)
- 
+
+    logger.info(f"SQLALCHEMY_DATABASE_URI: {app.config['SQLALCHEMY_DATABASE_URI']}")
     
     with app.app_context():
-        if not os.getenv("TESTING"):  # Chỉ tạo table nếu không phải môi trường test
-            db.create_all()
+        try:
+            db.session.execute("SELECT 1")
+            logger.info("Database connection successful")
+        except Exception as e:
+            logger.error(f"Database connection failed: {str(e)}")
+    
+    #with app.app_context():
+        #if not os.getenv("TESTING"):  # Chỉ tạo table nếu không phải môi trường test
+            #db.create_all()
             
     logger.info("Flask app đã khởi động.")
     return app, celery, migrate

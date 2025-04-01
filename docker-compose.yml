@@ -28,7 +28,7 @@ services:
     container_name: mysql_db
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: SubSoLMdGMVNXBCANqoyAhmskjLWkUel
+      MYSQL_ROOT_PASSWORD: 3366
       MYSQL_DATABASE: railway
     ports:
       - "3306:3306"
