@@ -46,7 +46,6 @@ def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(config_class)
     app.config["DEBUG"] = True  # Bật debug mode (Chỉ khi phát triển)
-    logger.info(f"Database URI: {app.config['SQLALCHEMY_DATABASE_URI']}")
     # Khởi tạo các extension
     db.init_app(app)
     jwt.init_app(app)

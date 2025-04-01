@@ -1,6 +1,2 @@
-create TABLE users;
-
-
-
-
+SELECT * FROM users;
 

@@ -4,3 +4,6 @@ api_log.log
 scripts.py
 text_httpx.py
 pytest.ini
+package-lock.json
+package.json
+Railway MySQL.session.sql
