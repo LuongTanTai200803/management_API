@@ -54,4 +54,4 @@ class Config:
 
 class TestingConfig(Config):
     TESTING = True
-    #SQLALCHEMY_DATABASE_URI = "sqlite:///:memory:"  # Hoặc PostgreSQL test DB
+    SQLALCHEMY_DATABASE_URI = "sqlite:///:memory:"  # Hoặc PostgreSQL test DB

@@ -2,6 +2,7 @@ import logging
 import os
 from flask import Flask, request
 from flask_migrate import Migrate
+from sqlalchemy import text
 
 from app.exceptions import BadRequest
 from .configurations import Config
@@ -82,7 +83,7 @@ def create_app(config_class=Config):
     
     with app.app_context():
         try:
-            db.session.execute("SELECT 1")
+            db.session.execute(text("SELECT 1"))
             logger.info("Database connection successful")
         except Exception as e:
             logger.error(f"Database connection failed: {str(e)}")
