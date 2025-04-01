@@ -46,7 +46,7 @@ def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(config_class)
     app.config["DEBUG"] = True  # Bật debug mode (Chỉ khi phát triển)
-
+    logger.info(f"Database URI: {app.config['SQLALCHEMY_DATABASE_URI']}")
     # Khởi tạo các extension
     db.init_app(app)
     jwt.init_app(app)
@@ -80,9 +80,9 @@ def create_app(config_class=Config):
     register_routes(app)
  
     
-    #with app.app_context():
-     #   if not os.getenv("TESTING"):  # Chỉ tạo table nếu không phải môi trường test
-      #      db.create_all()
+    with app.app_context():
+        if not os.getenv("TESTING"):  # Chỉ tạo table nếu không phải môi trường test
+            db.create_all()
             
     logger.info("Flask app đã khởi động.")
     return app, celery, migrate
