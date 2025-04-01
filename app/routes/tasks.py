@@ -16,7 +16,6 @@ task_bp = Blueprint("tasks", __name__)
 def test():
     return{"msg": "OK"}
 
-
 @task_bp.route("/", methods=["POST"])
 @jwt_required() # Buộc user phải có token hợp lệ
 def create_task():
