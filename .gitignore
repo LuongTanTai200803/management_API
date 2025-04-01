@@ -6,4 +6,5 @@ text_httpx.py
 pytest.ini
 package-lock.json
 package.json
-Railway MySQL.session.sql
+pytest
+text_httpx
