@@ -88,9 +88,9 @@ def create_app(config_class=Config):
         except Exception as e:
             logger.error(f"Database connection failed: {str(e)}")
     
-    #with app.app_context():
-        #if not os.getenv("TESTING"):  # Chỉ tạo table nếu không phải môi trường test
-            #db.create_all()
+    with app.app_context():
+        if not os.getenv("TESTING"):  # Chỉ tạo table nếu không phải môi trường test
+            db.create_all()
             
     logger.info("Flask app đã khởi động.")
     return app, celery, migrate
